@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setFavourite, setMailOpen } from "../../Store/emailsDataSlice";
@@ -23,8 +23,10 @@ const EmailBody = () => {
     }
   };
 
-  useEffect(() => {
+
+  useCallback(() => {
     fetchMailBody();
+
   }, [currentEmail.id, fetchMailBody]);
 
   let date = new Date(currentEmail.date);
