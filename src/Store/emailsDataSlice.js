@@ -20,9 +20,10 @@ export const emailsDataSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       state.data = action.payload;
-      state.data.forEach(
-        (obj) => ((obj.readStatus = "unread"), (obj.favourite = false))
-      );
+      state.data.forEach((obj) => {
+        obj.readStatus = "unread";
+        obj.favourite = false;
+      });
     },
     setStatus: (state, action) => {
       state.status = action.payload;
@@ -55,7 +56,6 @@ export const {
 export default emailsDataSlice.reducer;
 
 // Thunk
-
 export function fetchEmailsData() {
   return async function (dispatch, getState) {
     dispatch(setStatus(STATUSES.LOADING));
