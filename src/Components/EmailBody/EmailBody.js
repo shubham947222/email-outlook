@@ -12,7 +12,7 @@ const EmailBody = () => {
   const currentEmail = useSelector((state) => state.emails.currentMail);
   const favourite = useSelector((state) => state.emails.currentMail.favourite);
   console.log(favourite)
-  const fetchMailBody = async () => {
+  const fetchMailBody = useCallback(async () => {
     try {
       const response = await axios.get(
         `https://flipkart-email-mock.now.sh/?id=${currentEmail.id}`
@@ -21,13 +21,11 @@ const EmailBody = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [currentEmail.id]);
 
-
-  useCallback(() => {
+  useEffect(() => {
     fetchMailBody();
-
-  }, [currentEmail.id, fetchMailBody]);
+  }, [fetchMailBody]);
 
   let date = new Date(currentEmail.date);
   let minute = date.getMinutes();
