@@ -44,7 +44,7 @@ const Inbox = () => {
   if (status === STATUSES.LOADING) {
     return (
       <div className="flex justify-center">
-        <img src={loading} alt="loadingGif" className="h-[100vh]" />
+        loading...
       </div>
     );
   }
