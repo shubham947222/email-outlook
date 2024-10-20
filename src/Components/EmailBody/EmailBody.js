@@ -25,7 +25,7 @@ const EmailBody = () => {
 
   useEffect(() => {
     fetchMailBody();
-  }, [currentEmail.id]);
+  }, [currentEmail.id, fetchMailBody]);
 
   let date = new Date(currentEmail.date);
   let minute = date.getMinutes();
@@ -57,7 +57,7 @@ const EmailBody = () => {
               >
                 Mark as favourite
               </span>
-              
+
             </div>
             <span className=" text-sm">
               {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
